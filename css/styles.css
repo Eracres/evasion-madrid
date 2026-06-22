@@ -1,17 +1,30 @@
 :root {
-  --color-bg: #0f172a;
-  --color-bg-soft: #111827;
-  --color-text: #f8fafc;
-  --color-muted: #cbd5e1;
-  --color-primary: #d97706;
-  --color-primary-light: #f59e0b;
-  --color-card: #1f2937;
+  --color-bg: #11140f;
+  --color-bg-soft: #1f241b;
+  --color-card: #2b3024;
+
+  --color-primary: #6b7d3a;
+  --color-primary-light: #a3a86b;
+  --color-accent: #c2a76b;
+
+  --color-text: #f3f4ec;
+  --color-muted: #c7cbb8;
+
+  --color-surface: #e5e0d2;
+  --color-surface-soft: #d6d0bd;
+  --color-surface-card: #f3efe2;
+
   --color-white: #ffffff;
-  --color-dark-text: #111827;
+  --color-dark-text: #1a1d16;
+
   --container-width: 1180px;
   --radius: 20px;
-  --shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+  --shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
 }
+
+/* =========================
+   RESET GENERAL
+========================= */
 
 * {
   box-sizing: border-box;
@@ -26,7 +39,7 @@ html {
 body {
   font-family: Arial, Helvetica, sans-serif;
   color: var(--color-dark-text);
-  background: #f8fafc;
+  background: var(--color-surface);
   line-height: 1.6;
 }
 
@@ -40,13 +53,18 @@ a {
   margin: 0 auto;
 }
 
+/* =========================
+   HEADER
+========================= */
+
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(15, 23, 42, 0.96);
-  color: var(--color-white);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(17, 20, 15, 0.96);
+  color: var(--color-text);
+  border-bottom: 1px solid rgba(194, 167, 107, 0.25);
+  backdrop-filter: blur(10px);
 }
 
 .header-content {
@@ -61,7 +79,7 @@ a {
   font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: var(--color-primary-light);
+  color: var(--color-accent);
 }
 
 .main-nav {
@@ -76,8 +94,12 @@ a {
 }
 
 .main-nav a:hover {
-  color: var(--color-white);
+  color: var(--color-accent);
 }
+
+/* =========================
+   BOTONES
+========================= */
 
 .btn {
   display: inline-flex;
@@ -87,7 +109,7 @@ a {
   padding: 0 22px;
   border-radius: 999px;
   font-weight: 700;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
 .btn:hover {
@@ -100,21 +122,31 @@ a {
 }
 
 .btn-primary:hover {
-  background: var(--color-primary-light);
+  background: var(--color-accent);
+  color: var(--color-bg);
 }
 
 .btn-secondary {
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: var(--color-white);
+  border: 1px solid rgba(194, 167, 107, 0.6);
+  color: var(--color-text);
 }
+
+.btn-secondary:hover {
+  background: rgba(194, 167, 107, 0.15);
+  color: var(--color-accent);
+}
+
+/* =========================
+   HOME - HERO
+========================= */
 
 .hero {
   background:
-    linear-gradient(rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.9)),
+    linear-gradient(rgba(17, 20, 15, 0.78), rgba(17, 20, 15, 0.94)),
     url("../assets/img/hero-paintball.jpg");
   background-size: cover;
   background-position: center;
-  color: var(--color-white);
+  color: var(--color-text);
   padding: 110px 0;
 }
 
@@ -129,7 +161,7 @@ a {
 .section-eyebrow {
   display: inline-block;
   margin-bottom: 14px;
-  color: var(--color-primary-light);
+  color: var(--color-accent);
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -158,14 +190,16 @@ a {
 }
 
 .hero-card {
-  background: rgba(31, 41, 55, 0.92);
+  background: rgba(43, 48, 36, 0.94);
   padding: 32px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  border: 1px solid rgba(194, 167, 107, 0.25);
 }
 
 .hero-card h2 {
   margin-bottom: 12px;
+  color: var(--color-text);
 }
 
 .hero-card p {
@@ -177,7 +211,12 @@ a {
   list-style: none;
   display: grid;
   gap: 10px;
+  color: var(--color-text);
 }
+
+/* =========================
+   SECCIONES GENERALES
+========================= */
 
 .section {
   padding: 86px 0;
@@ -200,26 +239,40 @@ a {
 
 .feature-card,
 .event-card,
+.price-card,
+.contact-card,
+.reservation-form,
+details {
+  background: var(--color-surface-card);
+  border: 1px solid rgba(43, 48, 36, 0.12);
+  box-shadow: 0 12px 35px rgba(17, 20, 15, 0.12);
+}
+
+.feature-card,
+.event-card,
 .price-card {
-  background: var(--color-white);
   padding: 28px;
   border-radius: var(--radius);
-  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
 }
 
 .feature-card h3,
 .event-card h3 {
   margin-bottom: 12px;
+  color: var(--color-dark-text);
 }
 
 .feature-card p,
 .event-card p {
-  color: #475569;
+  color: #4d513f;
 }
+
+/* =========================
+   SECCIÓN OSCURA / PRECIOS
+========================= */
 
 .section-dark {
   background: var(--color-bg-soft);
-  color: var(--color-white);
+  color: var(--color-text);
 }
 
 .section-dark p {
@@ -238,7 +291,7 @@ a {
 }
 
 .price-card span {
-  color: #64748b;
+  color: #69705c;
   font-weight: 700;
 }
 
@@ -252,8 +305,12 @@ a {
 
 .price-card p {
   margin-bottom: 24px;
-  color: #475569;
+  color: #4d513f;
 }
+
+/* =========================
+   EVENTOS
+========================= */
 
 .cards-grid {
   grid-template-columns: repeat(3, 1fr);
@@ -266,8 +323,16 @@ a {
   font-weight: 800;
 }
 
+.event-card a:hover {
+  color: var(--color-bg-soft);
+}
+
+/* =========================
+   FAQ
+========================= */
+
 .faq-section {
-  background: #f1f5f9;
+  background: var(--color-surface-soft);
 }
 
 .faq-list {
@@ -277,25 +342,29 @@ a {
 }
 
 details {
-  background: var(--color-white);
   border-radius: 14px;
   padding: 20px 24px;
-  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
 }
 
 summary {
   cursor: pointer;
   font-weight: 800;
+  color: var(--color-dark-text);
 }
 
 details p {
   margin-top: 12px;
-  color: #475569;
+  color: #4d513f;
 }
 
+/* =========================
+   CTA FINAL
+========================= */
+
 .cta-section {
-  background: var(--color-primary);
-  color: var(--color-white);
+  background:
+    linear-gradient(135deg, var(--color-bg-soft), var(--color-primary));
+  color: var(--color-text);
   padding: 76px 0;
   text-align: center;
 }
@@ -309,32 +378,29 @@ details p {
 .cta-content p {
   max-width: 680px;
   margin: 0 auto 28px;
+  color: var(--color-muted);
 }
 
 .cta-section .btn-primary {
-  background: var(--color-bg);
+  background: var(--color-accent);
+  color: var(--color-bg);
 }
 
-.site-footer {
-  background: var(--color-bg);
-  color: var(--color-muted);
-  padding: 32px 0;
+.cta-section .btn-primary:hover {
+  background: var(--color-text);
 }
 
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  font-size: 0.9rem;
-}
+/* =========================
+   PÁGINA CONTACTO
+========================= */
 
 .page-hero {
   background:
-    linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.92)),
+    linear-gradient(rgba(17, 20, 15, 0.82), rgba(17, 20, 15, 0.94)),
     url("../assets/img/hero-paintball.jpg");
   background-size: cover;
   background-position: center;
-  color: var(--color-white);
+  color: var(--color-text);
   padding: 90px 0;
 }
 
@@ -367,10 +433,8 @@ details p {
 }
 
 .contact-card {
-  background: var(--color-white);
   padding: 24px;
   border-radius: var(--radius);
-  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
   margin-bottom: 18px;
 }
 
@@ -383,8 +447,11 @@ details p {
   font-weight: 800;
 }
 
+.contact-card a:hover {
+  color: var(--color-bg-soft);
+}
+
 .reservation-form {
-  background: var(--color-white);
   padding: 32px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -417,32 +484,48 @@ details p {
 .form-group select,
 .form-group textarea {
   width: 100%;
-  border: 1px solid #cbd5e1;
+  border: 1px solid #b7b095;
   border-radius: 14px;
   padding: 14px 16px;
   font: inherit;
-  background: #f8fafc;
+  color: var(--color-dark-text);
+  background: #fffaf0;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  outline: 3px solid rgba(217, 119, 6, 0.22);
+  outline: 3px solid rgba(107, 125, 58, 0.25);
   border-color: var(--color-primary);
 }
 
 .form-note {
   grid-column: 1 / -1;
-  color: #64748b;
+  color: #5f6350;
   font-size: 0.9rem;
 }
 
-@media (max-width: 860px) {
-  .contact-grid,
-  .reservation-form {
-    grid-template-columns: 1fr;
-  }
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+  background: var(--color-bg);
+  color: var(--color-muted);
+  padding: 32px 0;
+  border-top: 1px solid rgba(194, 167, 107, 0.18);
 }
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 0.9rem;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media (max-width: 980px) {
   .main-nav {
@@ -463,6 +546,13 @@ details p {
   }
 }
 
+@media (max-width: 860px) {
+  .contact-grid,
+  .reservation-form {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 640px) {
   .header-content {
     min-height: 68px;
@@ -474,6 +564,10 @@ details p {
 
   .hero {
     padding: 80px 0;
+  }
+
+  .page-hero {
+    padding: 70px 0;
   }
 
   .hero-card {
